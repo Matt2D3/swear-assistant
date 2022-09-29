@@ -7,19 +7,23 @@ engine = pyttsx3.init()
 
 r = sr.Recognizer()
 
+devMode = True
 running = True
 while running:
     sayStr = ""
     text = ""
-    with sr.Microphone() as source:   
-        try:
-            print("Say something!")
-            audio = r.listen(source)
-            print("audio detected")
-            text = r.recognize_google(audio).lower()
-        except Exception as e :
-            print("error: "+str(e))    
-            text = ""
+    if(devMode == False):
+        with sr.Microphone() as source:   
+            try:
+                print("Say something!")
+                audio = r.listen(source)
+                print("audio detected")
+                text = r.recognize_google(audio).lower()
+            except Exception as e :
+                print("error: "+str(e))    
+                text = ""
+    if(devMode == True):
+        text = input("command: ")
     print(text)
     if("what" in text):
         now = datetime.now()
