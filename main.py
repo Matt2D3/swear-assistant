@@ -1,5 +1,4 @@
 import os
-
 import datetime 
 import speech_recognition as sr
 from os import path
@@ -27,7 +26,7 @@ while running:
     if("what" in text):
         now = datetime.now()
         if("time" in text):
-            sayStr += now.strftime("%H:%M ")
+            sayStr += str(now.strftime("%H:%M "))
         if("day" in text or "date" in text):
             sayStr += str(now.strftime("%B %d, %Y "))
             
