@@ -58,6 +58,32 @@ while running:
             
             os.system(command)
             command = ""
+
+        #math 
+
+        if("solve" in text):
+            text = text.replace("solve","")
+            if ("plus" in text):
+                text = text.replace("solve","")
+                text = text.replace("plus","")
+                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                sayStr = (str(int(before_keyword)+int(after_keyword)))
+            if ("minus" in text):
+                text = text.replace("solve","")
+                text = text.replace("minus","")
+                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                sayStr = (str(int(before_keyword)-int(after_keyword)))
+            if ("times" in text):
+                text = text.replace("solve","")
+                text = text.replace("times","")
+                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                sayStr = (str(int(before_keyword)*int(after_keyword)))
+            if ("divided by" in text):
+                text = text.replace("solve","")
+                text = text.replace("divided by","")
+                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                sayStr = (str(int(before_keyword)+int(after_keyword)))
+
     if(sayStr != ""):  
         engine.say(sayStr)
         engine.runAndWait()
