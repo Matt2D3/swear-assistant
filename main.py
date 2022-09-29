@@ -1,6 +1,6 @@
 import os
 
-from datetime import date
+import datetime 
 import speech_recognition as sr
 from os import path
 import pyttsx3
@@ -15,18 +15,21 @@ while running:
     sayStr = ""
     with sr.Microphone() as source:
     
-       
-        print("Say something!")
-        audio = r.listen(source)
-        print("audio detected")
+        try:
+            print("Say something!")
+            audio = r.listen(source)
+            print("audio detected")
+        except Exception as e :
+            print("error: "+str(e))
         
     text = r.recognize_google(audio)
+    print(text)
     if("what" in text):
-        now = date.datetime.now()
+        now = datetime.now()
         if("time" in text):
             sayStr += now.strftime("%H:%M ")
         if("day" in text or "date" in text):
-            sayStr += str(today.strftime("%B %d, %Y "))
+            sayStr += str(now.strftime("%B %d, %Y "))
             
         engine.say(sayStr)
     engine.runAndWait()
