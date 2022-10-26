@@ -1,12 +1,16 @@
 import os
-import datetime 
+from datetime import date
 import speech_recognition as sr
 from os import path
 import pyttsx3
+from datetime import datetime
 engine = pyttsx3.init()
 
 r = sr.Recognizer()
-
+print("calibrating")
+with sr.Microphone() as source:
+    r.adjust_for_ambient_noise(source)
+print("calibrated")
 devMode = True
 running = True
 while running:
@@ -16,6 +20,7 @@ while running:
         with sr.Microphone() as source:   
             try:
                 print("Say something!")
+                r.pause_threshold = 1
                 audio = r.listen(source)
                 print("audio detected")
                 text = r.recognize_google(audio).lower()
@@ -26,6 +31,7 @@ while running:
         text = input("command: ")
     print(text)
     if("what" in text):
+        today = date.today()
         now = datetime.now()
         if("time" in text):
             sayStr += str(now.strftime("%H:%M "))
@@ -71,23 +77,26 @@ while running:
                 text = text.replace("solve","")
                 text = text.replace("plus","")
                 before_keyword, keyword, after_keyword = text.partition(" plus ")
+                print(before_keyword)
+                print(after_keyword)
                 sayStr = (str(int(before_keyword)+int(after_keyword)))
             if ("minus" in text):
                 text = text.replace("solve","")
                 text = text.replace("minus","")
-                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                before_keyword, keyword, after_keyword = text.partition(" minus ")
                 sayStr = (str(int(before_keyword)-int(after_keyword)))
             if ("times" in text):
                 text = text.replace("solve","")
                 text = text.replace("times","")
-                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                before_keyword, keyword, after_keyword = text.partition(" times ")
                 sayStr = (str(int(before_keyword)*int(after_keyword)))
             if ("divided by" in text):
                 text = text.replace("solve","")
                 text = text.replace("divided by","")
-                before_keyword, keyword, after_keyword = text.partition(" plus ")
+                before_keyword, keyword, after_keyword = text.partition(" divided by ")
                 sayStr = (str(int(before_keyword)+int(after_keyword)))
 
     if(sayStr != ""):  
         engine.say(sayStr)
         engine.runAndWait()
+        print(sayStr)
