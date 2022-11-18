@@ -1,4 +1,5 @@
 import os
+import wikipedia 
 from datetime import datetime 
 import speech_recognition as sr
 from os import path
@@ -10,7 +11,7 @@ engine.setProperty('rate', 150)
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 r = sr.Recognizer()
-devMode = False
+devMode = True
 running = True
 if(devMode == False):
     m = sr.Microphone()
@@ -84,7 +85,13 @@ while running:
             
             os.system(command)
             command = ""
-        
+        if("on wikipedia" in text):
+            if("look up" in text):
+                before_keyword, keyword, after_keyword = text.partition("look up ")
+            if("search for" in text):
+                before_keyword, keyword, after_keyword = text.partition("search for ")
+            after_keyword = after_keyword.replace(" on youtube" , "")
+            sayStr += wikipedia.summary(after_keyword, sentences=1)
     if(sayStr != ""):  
         print(sayStr)
         engine.say(sayStr)
