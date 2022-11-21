@@ -14,7 +14,7 @@ r = sr.Recognizer()
 devMode = True
 running = True
 if(devMode == False):
-    m = sr.Microphone()
+    m = sr.Microphone() 
     with m as source:
         r.adjust_for_ambient_noise(source)
 while running:
@@ -96,4 +96,3 @@ while running:
         print(sayStr)
         engine.say(sayStr)
         engine.runAndWait()
-        
