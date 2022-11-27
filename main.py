@@ -55,36 +55,6 @@ while running:
         if("day" in text or "date" in text):
             sayStr += str(now.strftime("%B %d, %Y "))  
     if("look up" in text or "search for" in text or "on google"):
-        
-        if("on google" in text):
-
-            after_keyword = text
-            if("look up" in text):
-                before_keyword, keyword, after_keyword = text.partition("look up ")
-            if("search for" in text.lower()):
-                before_keyword, keyword, after_keyword = text.partition("search for ")
-            after_keyword = after_keyword.replace(" on google" , "")
-            after_keyword = after_keyword.replace(" ","+")
-            command = (str("firefox https://www.google.com/search?q="+after_keyword))
-            print(after_keyword)
-            print(command)
-            
-            os.system(command)
-        if("on youtube" in text):
-
-            after_keyword = text
-            if("look up" in text):
-                before_keyword, keyword, after_keyword = text.partition("look up ")
-            if("search for" in text):
-                before_keyword, keyword, after_keyword = text.partition("search for ")  
-            after_keyword = after_keyword.replace(" on youtube" , "")
-            after_keyword = after_keyword.replace(" ","+")
-            command = (str("firefox https://www.youtube.com/results?search_query="+after_keyword))
-            print(after_keyword)
-            print(command)
-            
-            os.system(command)
-            command = ""
         if("on wikipedia" in text):
             if("look up" in text):
                 before_keyword, keyword, after_keyword = text.partition("look up ")
