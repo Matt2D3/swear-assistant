@@ -7,7 +7,9 @@ import pyttsx3
 engine = pyttsx3.init()
 
 engine.setProperty('rate', 150)
-
+print("I use linux by the way")
+engine.say("I use linux by the way")
+engine.runAndWait()
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
 r = sr.Recognizer()
