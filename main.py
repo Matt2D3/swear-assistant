@@ -38,18 +38,18 @@ while running:
         text = input("command: ")
     
     if("what" in text):
-        if("drawing" in text):
-            sayStr += "in technical drawing, we learn to design and build architecture and engineering projects and activities which include: sketching, drawing, cad, 3D printing, laser engraving, model building, and graphics. "
-        if("drone" in text):
+        if("drawing" in text): # tech drawing
+            sayStr += "in technical drawing, we learn to design and build architecture and engineering projects and activities which include: sketching, drawing, cad, 3D printing, laser engraving, model building, and graphics. this smart speaker is a project for tech drawing. "
+        if("drone" in text): # drone tech
             sayStr += "in drone tech, you learn how to fly a drone, how to take good photos with drones, and how to take cinimatic videos with drones. along with the laws regarding how, what, when, and where you can fly. "
-        if("graphics" in text):
+        if("graphics" in text): # computer graphics 
             sayStr += "in computer graphics, students will explore the amazing visual potential in computer genorated graphics. "
-        if("electronics" in text or "robotics" in text):
+        if("electronics" in text or "robotics" in text): # electronics and robotics
             sayStr += "in electronics and robotics class, you learn the basics on how to build and program a robot, aswell as compete in a class competition where you build and drive your own robot to compete against other robots. "
             sayStr += "you also learn the basics of how electrical circuts work and the math used to design them. "
-        if("home" in text or "know your" in text):
+        if("home" in text or "know your" in text): # know your home 
             sayStr += "know your home is where you learn about home repair and construction technology to solve practical problems found in the home. "
-        if("squad" in text):
+        if("squad" in text): # design squad
             sayStr += "in design squad, use the design process to solve an engineering problem. "
         now = datetime.now().time()
         if("time" in text):
@@ -63,7 +63,10 @@ while running:
             if("search for" in text):
                 before_keyword, keyword, after_keyword = text.partition("search for ")
             after_keyword = after_keyword.replace(" on youtube" , "")
-            sayStr += wikipedia.summary(after_keyword, sentences=1)
+            try:
+                sayStr += wikipedia.summary(after_keyword, sentences=1)
+            except:
+                sayStr+= ("I couldn't find that topic on wikipedia, which is impressive. good job")
     if(sayStr != ""):  
         print(sayStr)
         engine.say(sayStr)
