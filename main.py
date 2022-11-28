@@ -7,8 +7,8 @@ import pyttsx3
 engine = pyttsx3.init()
 
 engine.setProperty('rate', 150)
-print("I use linux by the way")
-engine.say("I use linux by the way")
+print("by the way I use linux")
+engine.say("by the way I use linux")
 engine.runAndWait()
 for index, name in enumerate(sr.Microphone.list_microphone_names()):
     print("Microphone with name \"{1}\" found for `Microphone(device_index={0})`".format(index, name))
@@ -56,7 +56,7 @@ while running:
             sayStr += str(now.strftime("%H:%M "))
         if("day" in text or "date" in text):
             sayStr += str(now.strftime("%B %d, %Y "))  
-    if("look up" in text or "search for" in text or "on google"):
+    if("look up" in text or "search for" in text):
         if("on wikipedia" in text):
             if("look up" in text):
                 before_keyword, keyword, after_keyword = text.partition("look up ")
