@@ -62,7 +62,6 @@ while running:
                 before_keyword, keyword, after_keyword = text.partition("look up ")
             if("search for" in text):
                 before_keyword, keyword, after_keyword = text.partition("search for ")
-            after_keyword = after_keyword.replace(" on youtube" , "")
             try:
                 sayStr += wikipedia.summary(after_keyword, sentences=1)
             except:
