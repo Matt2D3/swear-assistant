@@ -1,0 +1,12 @@
+[Unit]
+Description=starts virtual assistant
+After=network.target
+StartLimitIntervalSec=0[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ubuntu
+ExecStart=/home/ubuntu python3 main.py && python3 servoManager.py
+
+[Install]
+WantedBy=multi-user.target
