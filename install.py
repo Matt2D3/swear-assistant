@@ -26,13 +26,15 @@ os.system("ifconfig wlan0 up")
 print("scanning for networks")
 os.system("ifconfig wlan0 up")
 print(os.system("nmcli dev wifi"))
-netName = input("enter the name of the network you wish to connect to as it appears above: ")
-password = input("enter network password (leave blank if none): ")
-if(password == ""):
-    os.system("iwconfig wlan0 essid "+netName)
-if(password != ""):
-    os.system("iwconfig wlan0 essid "+netName+" key "+password)
-print("i haven't implemented network tests, so.....")
+wifi = input("do you want to connect to wifi? (y/n)
+if(wifi = "y"):
+    netName = input("enter the name of the network you wish to connect to as it appears above: ")
+    password = input("enter network password (leave blank if none): ")
+    if(password == ""):
+        os.system("iwconfig wlan0 essid "+netName)
+    if(password != ""):
+        os.system("iwconfig wlan0 essid "+netName+" key "+password)
+    print("i haven't implemented network tests, so.....")
 time.sleep(1)
 print("restarting")
 os.system("shutdown -r now")
