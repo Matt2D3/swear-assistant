@@ -2,7 +2,7 @@
 Description=starts virtual assistant
 
 [Service]
-ExecStart=bash /home/ubuntu/start.sh 
+ExecStart=bash /home/ubuntu/netStart.sh 
 
 [Install]
 WantedBy=multi-user.target
